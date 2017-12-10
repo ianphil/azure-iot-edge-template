@@ -120,7 +120,7 @@ The edge.py script also include a "Logs" command that will open a new command pr
 python edge.py runtime --logs
 ```
 
-You can configure the logs command in the .env file with the LOGS_CMD setting.  The .env.tmp file provides two options, one for ConEmu and one for Cmd.exe.
+You can configure the logs command in the .env file with the LOGS_CMD setting.  The .env.tmp file provides two options, one for [ConEmu](https://conemu.github.io/) and one for Cmd.exe.
 
 ## Issues
 
