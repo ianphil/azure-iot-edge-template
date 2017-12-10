@@ -55,6 +55,8 @@ There are 3 main folders in this project:
     - Make sure you enable Admin Access when you create the Azure Container Registry
 1. Create Edge Device using the Azure Portal
 
+You can use the `azureSetup.sh` script, in the root of this repo, to deploy the Hub and ACR resources using the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest). **Modify the variables section in the script before running.**
+
 You can also deploy the IoT Hub and Container Registry with this deployment script:
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjonbgallant%2Fazure-iot-edge-template%2Fmaster%2Fassets%2Fdeploy%2FARMDeployment%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
