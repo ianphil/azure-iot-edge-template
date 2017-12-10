@@ -57,7 +57,7 @@ There are 3 main folders in this project:
 
 You can also deploy the IoT Hub and Container Registry with this deployment script:
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjonbgallant%2Fazure-iot-edge-template%2Fassets%2Fdeploy%2FARMDeployment%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjonbgallant%2Fazure-iot-edge-template%2Fmaster%2Fassets%2Fdeploy%2FARMDeployment%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
 
     
