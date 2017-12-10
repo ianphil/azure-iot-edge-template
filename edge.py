@@ -111,7 +111,8 @@ def open_log(modules):
 
 def set_container_registry():
     print("Pushing Edge Runtime to Container Registry")
-    image_names = ["azureiotedge-agent", "azureiotedge-hub"]
+    image_names = ["azureiotedge-agent", "azureiotedge-hub",
+                   "azureiotedge-simulated-temperature-sensor"]
     for image_name in image_names:
 
         microsoft_image_name = "microsoft/{0}:{1}".format(
@@ -130,6 +131,27 @@ def set_container_registry():
         # push to container registry
         for line in docker_api.push(repository=container_registry_image_name, stream=True):
             print(line)
+
+    set_container_registry_in_config(image_names)
+
+
+def set_container_registry_in_config(image_names):
+    print("Changing Edge config files to use Container Registry")
+    config_dir = "{0}\\config".format(os.getcwd())
+
+    # Get all config files in \config dir.
+    config_files = [os.path.join(config_dir, f) for f in os.listdir(
+        config_dir) if f.endswith(".json")]
+
+    # Replace microsoft/ with ${CONTAINER_REGISTRY_SERVER}
+    for config_file in config_files:
+        config_file_contents = get_file_contents(config_file)
+        for image_name in image_names:
+            config_file_contents = config_file_contents.replace(
+                "microsoft/" + image_name, "${CONTAINER_REGISTRY_SERVER}/" + image_name)
+
+        with open(config_file, "w") as config_file_build:
+            config_file_build.write(config_file_contents)
 
 
 def set_config():
@@ -155,6 +177,8 @@ def set_config():
             config_file_build.write(config_file_expanded)
 
 # Modules Functions
+
+
 def build():
     print("Building Modules")
 
@@ -245,6 +269,7 @@ def build():
                 for line in docker_client.images.push(repository=image_destination_name, stream=True):
                     print(line)
 
+
 def deploy():
     print("Deploying Edge Module Config")
     deploy_device_configuration(
@@ -254,6 +279,8 @@ def deploy():
         os.environ.get("IOTHUB_POLICY_NAME"), os.environ.get("IOT_REST_API_VERSION"))
 
 # Docker Functions
+
+
 def remove_containers():
     print("Removing Containers....")
     containers = docker_client.containers.list(all=True)
