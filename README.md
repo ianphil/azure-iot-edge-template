@@ -45,7 +45,7 @@ There are 3 main folders in this project:
 
 1. **modules** - Contains all of the modules for your Edge project.
     - The edge.py script assumes that you'll structure your Dockerfiles exactly like the filter-module sample.  Have a Docker folder in the root of the project, then subfolders within that to support multiple Docker files.
-
+    - Your .*proj file must have the same name as your module folder name. If your module is named filter-module, then your proj file must be named filter-module.csproj
         > It is important that you follow this structure or the script will not work.
 
 ## Setup
