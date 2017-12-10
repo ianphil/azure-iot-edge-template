@@ -18,21 +18,21 @@ ACR_NAME="ianphilacrtest"
 echo "Creating Resource Group"
 RG_STATE=$(az group create --name $RG_NAME --location $LOCATION --query properties.provisioningState -o tsv)
 [[ "$RG_STATE" == "Succeeded" ]] || { echo >&2 Creating Resource Group failed; exit 1; }
-echo "Completd succesfully"
+echo "Completed succesfully"
 echo " "
 
 # Create Azure IoT Hub
 echo "Creating Azure IoT Hub"
 HUB_STATE=$(az iot hub create --name $IOT_HUB_NAME --resource-group $RG_NAME --query properties.provisioningState -o tsv)
 [[ "$HUB_STATE" == "Succeeded" ]] || { echo >&2 Creating Azure IoT Hub failed; exit 1; }
-echo "Completd succesfully"
+echo "Completed succesfully"
 echo " "
 
 # Create Azure Container Registry (with admin password)
 echo "Creating Azure Container Registry"
 ACR_STATE=$(az acr create --name $ACR_NAME --resource-group $RG_NAME --sku Basic --admin-enabled --query provisioningState -o tsv)
 [[ "$ACR_STATE" == "Succeeded" ]] || { echo >&2 Creating ACR failed; exit 1; }
-echo "Completd succesfully"
+echo "Completed succesfully"
 echo " "
 
 # Print info about deployment
