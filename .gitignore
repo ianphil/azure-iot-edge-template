@@ -6,3 +6,4 @@
 build
 .env
 /deploy/ARMDeployment/Deployment.targets
+venv
